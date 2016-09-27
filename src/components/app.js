@@ -3,7 +3,7 @@ import { Router } from 'preact-router';
 
 import Header from './header';
 import Home from './home';
-import Profile from './profile';
+import Slideshow from './slideshow';
 
 
 export default class App extends Component {
@@ -15,14 +15,22 @@ export default class App extends Component {
 		this.currentUrl = e.url;
 	};
 
+	addSub = sub => {
+		this.state.subs = [...this.state.subs, sub]
+		this.setState()
+	}
+
+	state = {
+		subs: ['pics']
+	};
+
 	render() {
 		return (
 			<div id="app">
-				<Header />
+				<Header subs={this.state.subs} test={this.state.test} addSub={this.addSub}/>
 				<Router onChange={this.handleRoute}>
 					<Home path="/" />
-					<Profile path="/profile/" user="me" />
-					<Profile path="/profile/:user" />
+					<Slideshow path="/slideshow"/>
 				</Router>
 			</div>
 		);

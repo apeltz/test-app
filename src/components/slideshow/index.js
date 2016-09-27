@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import style from './style';
 
-export default class Profile extends Component {
+export default class Slideshow extends Component {
 	state = {
 		count: 0
 	};
